@@ -23,7 +23,7 @@ int main()
 	int i, u, v, w, sz, nodes, edges, starting, end;
 	cout << "Enter the number of vertices and edges: ";
 	cin >> nodes >> edges;
-	cout << "Enter the edges with weigth: <source> <destination> <weight>: \n";
+	cout << "Enter the edges with weight: <source> <destination> <weight>: \n";
 	for (i = 0; i < edges; i++)
 	{
 		cin >> u >> v >> w;
