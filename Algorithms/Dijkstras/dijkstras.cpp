@@ -7,7 +7,7 @@
 using namespace std;
 
 struct compare {
-	bool operator()(const pair<int, int>& a, const pair<int, int>& b) {
+	bool operator()(const pair<unsigned int, unsigned int>& a, const pair<unsigned int, unsigned int>& b) {
 		return a.second > b.second;//second is weight
 	}
 };
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
 	unsigned int start, end;
 	
 	if (argc == 1) {
-		cout << "Enter the number of vertices and edges: ";
+		cout << "Enter the number of nodes and edges: ";
 		cin >> numNodes >> numEdges;
 		
 		graph.resize(numEdges);

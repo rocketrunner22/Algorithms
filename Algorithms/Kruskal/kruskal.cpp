@@ -6,7 +6,7 @@
 using namespace std;
 
 struct edge {
-	int source, destination, weight;
+	unsigned int source, destination, weight;
 };
 
 void printMST(vector<bool> inTree, vector<edge> set, int cost) {
@@ -34,8 +34,8 @@ void u(vector<unsigned int> &set, unsigned int x, unsigned int y) {
 	return;
 }
 
-void kruskals(vector<edge> &graph) {
-	vector<bool> inTree(graph.size());
+void kruskal(vector<edge> &graph) {
+	vector<bool> inMST(graph.size());
 	vector<unsigned int> set(graph.size());
 	unsigned int cost = 0;
 
@@ -47,14 +47,14 @@ void kruskals(vector<edge> &graph) {
 		unsigned int x = find(set, graph[i].source);
 		unsigned int y = find(set, graph[i].destination);
 		if (x != y) {
-			inTree[i] = true;
+			inMST[i] = true;
 			u(set, graph[i].source, graph[i].destination);//union the two nodes
 			cost += graph[i].weight;
 		}
 		else
-			inTree[i] = false;
+			inMST[i] = false;
 	}
-	printMST(inTree, graph, cost);
+	printMST(inMST, graph, cost);
 	return;
 }
 
@@ -71,12 +71,12 @@ int main(int argc, char* argv[]) {
 	}
 
 	else {
-		ifstream infile(argv[1]);
-		infile >> numEdges;
+		ifstream in(argv[1]);
+		in >> numEdges;
 		for (unsigned int i = 0; i < graph.size(); i++)
-			infile >> graph[i].source >> graph[i].destination >> graph[i].weight;
+			in >> graph[i].source >> graph[i].destination >> graph[i].weight;
 	}
 	
-	kruskals(graph);
+	kruskal(graph);
 	return 0;
 }
